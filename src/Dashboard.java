@@ -17,6 +17,8 @@ public class Dashboard {
     public void DashBarang() {
         Barang barang1 = new Barang("B01", "Kayu Meranti", "2025-03-10", 200, 50, 20);
         Barang barang2 = new Barang("B02", "Kayu Jati", "2025-03-12", 150, 40, 15);
+        Barang.CreateBarang(barang1);
+        Barang.CreateBarang(barang2);
         barang1.info();
         barang2.info();
 
@@ -79,8 +81,10 @@ public class Dashboard {
 
 
     public void DashTransaksi() {
-        Transaksi transaksi1 = new Transaksi(101, "2025-03-10", "Riyan Shohibul", "Kayu Meranti", 5, "Lunas");
-        Transaksi transaksi2 = new Transaksi(102, "2025-03-12", "Reza Arifin", "Kayu Jati", 7, "Belum Lunas");
+        Transaksi transaksi1 = new Transaksi("101", "2025-03-10", "Riyan Shohibul", "Kayu Meranti", 5, "Lunas");
+        Transaksi transaksi2 = new Transaksi("102", "2025-03-12", "Reza Arifin", "Kayu Jati", 7, "Belum Lunas");
+        Transaksi.CreateTransaksi(transaksi1);
+        Transaksi.CreateTransaksi(transaksi2);
         transaksi1.info();
         transaksi2.info();
 
@@ -90,24 +94,47 @@ public class Dashboard {
 
             while (pilihan !=5) {
                 System.out.println("\n");
-                System.out.println("1. Tambah Data Transaksi");
-                System.out.println("2. Edit Data Transaksi");
-                System.out.println("3. Hapus Data Transaksi");
-                System.out.println("4. Cari Data Transaksi");
+                System.out.println("1. Create (Tambah data Transaksi)");
+                System.out.println("2. Read (Tampilkan data Transaksi)");
+                System.out.println("3. Update (Ubah data Transaksi)");
+                System.out.println("4. Delete (Hapus data Transaksi)");
                 System.out.println("5. Kembali");
                 pilihan = input.nextInt();
+                input.nextLine();
                 switch (pilihan) {
                     case 1:
-                        transaksi1.TambahData();
+                        System.out.println("\n===Tambah Data Transaksi===");
+                        System.out.print("Masukkan ID Transaksi: ");
+                        String idTransaksi = input.nextLine();
+                        System.out.print("Masukkan Tanggal Transaksi: ");
+                        String tanggalTransaksi = input.nextLine();
+                        System.out.print("Masukkan Nama Pelanggan: ");
+                        String namaPelanggan = input.nextLine();
+                        System.out.print("Masukkan Jenis barang: ");
+                        String jenisbarangT = input.nextLine();
+                        System.out.print("Masukkan Jumlah: ");
+                        int jumlahTransaksi = input.nextInt();
+                        input.nextLine();
+                        System.out.print("Masukkan status Bayar: ");
+                        String statusBayar = input.nextLine();
+
+                        Transaksi transaksiBaru = new Transaksi(idTransaksi, tanggalTransaksi, namaPelanggan, jenisbarangT, jumlahTransaksi, statusBayar);
+                        Transaksi.CreateTransaksi(transaksiBaru);
                         break;
                     case 2:
-                        transaksi1.EditData();
+                        Transaksi.ReadTransaksi();
                         break;
                     case 3:
-                        transaksi1.HapusData();
+                        System.out.println("\n===Update Data Transaksi===");
+                        System.out.print("Masukkan ID Transaksi yang ingin diubah: ");
+                        String idUpdate = input.nextLine();
+                        Transaksi.UpdateTransaksi(idUpdate);
                         break;
                     case 4:
-                        transaksi1.CariData();
+                        System.out.println("\n===Hapus Data Transaksi===");
+                        System.out.print("Masukkan ID Transaksi yang ingin dihapus: ");
+                        String idHapus = input.nextLine();
+                        Transaksi.DeleteTransaksi(idHapus);
                         break;
                     case 5:
                         return;
@@ -119,9 +146,10 @@ public class Dashboard {
     }
 
     public void DashLaporan() {
-        Laporan laporan1 = new Laporan(701, "Jl. Raya Hutan No. 5", "Laporan Penjualan Kayu Meranti", "2025-03-10");
-        Laporan laporan2 = new Laporan(702, "Jl. Hutan Sejahtera No. 12", "Laporan Penebangan Kayu Jati", "2025-03-12");
-
+        Laporan laporan1 = new Laporan("701", "Jl. Raya Hutan No. 5", "Laporan Penjualan Kayu Meranti", "2025-03-10");
+        Laporan laporan2 = new Laporan("702", "Jl. Hutan Sejahtera No. 12", "Laporan Penebangan Kayu Jati", "2025-03-12");
+        Laporan.CreateLaporan(laporan1);
+        Laporan.CreateLaporan(laporan2);
         laporan1.info();
         laporan2.info();
 
@@ -131,24 +159,42 @@ public class Dashboard {
 
             while (pilihan !=5) {
                 System.out.println("\n");
-                System.out.println("1. Tambah Data Laporan");
-                System.out.println("2. Edit Data Laporan");
-                System.out.println("3. Hapus Data Laporan");
-                System.out.println("4. Cari Data Laporan");
+                System.out.println("1. Create (Tambah data Laporan)");
+                System.out.println("2. Read (Tampilkan data Laporan)");
+                System.out.println("3. Update (Ubah data laporan)");
+                System.out.println("4. Delete (Hapus data laporan)");
                 System.out.println("5. Kembali");
                 pilihan = input.nextInt();
+                input.nextLine();
                 switch (pilihan) {
                     case 1:
-                        laporan1.TambahData();
+                        System.out.println("\n===Tambah Data laporan===");
+                        System.out.print("Masukkan ID Laporan: ");
+                        String idLaporan = input.nextLine();
+                        System.out.print("Masukkan Alamat Kirim: ");
+                        String alamatKirim = input.nextLine();
+                        System.out.print("Masukkan Deskripsi: ");
+                        String Deskripsi = input.nextLine();
+                        System.out.print("Masukkan Tanggal Laporan: ");
+                        String tanggalLaporan = input.nextLine();
+
+                        Laporan laporanBaru = new Laporan(idLaporan, alamatKirim, Deskripsi, tanggalLaporan);
+                        Laporan.CreateLaporan(laporanBaru);
                         break;
                     case 2:
-                        laporan1.EditData();
+                        Laporan.ReadLaporan();
                         break;
                     case 3:
-                        laporan1.HapusData();
+                        System.out.println("\n===Update Data Laporan===");
+                        System.out.print("Masukkan ID Laporan yang ingin diubah: ");
+                        String idUpdate = input.nextLine();
+                        Laporan.UpdateLaporan(idUpdate);
                         break;
                     case 4:
-                        laporan1.CariData();
+                        System.out.println("\n===Hapus Data Laporan===");
+                        System.out.print("Masukkan ID Laporan yang ingin dihapus: ");
+                        String idHapus = input.nextLine();
+                        Laporan.DeleteLaporan(idHapus);
                         break;
                     case 5:
                         return;
@@ -160,8 +206,10 @@ public class Dashboard {
     }
 
     public void DashOperasional() {
-        Operasional operasional1 = new Operasional(401, "2025-03-10", 250000, 80000);
-        Operasional operasional2 = new Operasional(402, "2025-03-12", 300000, 90000);
+        Operasional operasional1 = new Operasional("401", "2025-03-10", 250000, 80000);
+        Operasional operasional2 = new Operasional("402", "2025-03-12", 300000, 90000);
+        Operasional.CreateOperasional(operasional1);
+        Operasional.CreateOperasional(operasional2);
         operasional1.info();
         operasional2.info();
 
@@ -171,24 +219,43 @@ public class Dashboard {
 
             while (pilihan !=5) {
                 System.out.println("\n");
-                System.out.println("1. Tambah Data");
-                System.out.println("2. Edit Data");
-                System.out.println("3. Hapus Data");
-                System.out.println("4. Cari Data");
+                System.out.println("1. Create (Tambah data Operasional)");
+                System.out.println("2. Read (Tampilkan data Operasional)");
+                System.out.println("3. Update (Ubah data Operasional)");
+                System.out.println("4. Delete (Hapus data Operasional)");
                 System.out.println("5. Kembali");
                 pilihan = input.nextInt();
+                input.nextLine();
                 switch (pilihan) {
                     case 1:
-                        operasional1.TambahData();
-                        break;
-                    case 2:
-                        operasional1.EditData();
+                        System.out.println("\n===Tambah Data Operasional===");
+                        System.out.print("Masukkan ID Operasional: ");
+                        String idOperasional = input.nextLine();
+                        System.out.print("Masukkan Tanggal Operasional: ");
+                        String tanggalOperasional = input.nextLine();
+                        System.out.print("Masukkan Biaya Mobil: ");
+                        int biayaMobil = input.nextInt();
+                        input.nextLine();
+                        System.out.print("Masukkan Biaya Supir: ");
+                        int biayaSupir = input.nextInt();
+                        input.nextLine();
+
+                        Operasional operasionalBaru = new Operasional(idOperasional, tanggalOperasional, biayaMobil, biayaSupir);
+                        Operasional.CreateOperasional(operasionalBaru);
                         break;
                     case 3:
-                        operasional1.HapusData();
+                        System.out.println("\n===Update Data Laporan===");
+                        System.out.print("Masukkan ID Laporan yang ingin diubah: ");
+                        String idUpdate = input.nextLine();
+                        Laporan.UpdateLaporan(idUpdate);
+                        break;
+                    case 2:Operasional.ReadOperasional();
                         break;
                     case 4:
-                        operasional1.CariData();
+                        System.out.println("\n===Hapus Data Operasional===");
+                        System.out.print("Masukkan ID Operasional yang ingin dihapus: ");
+                        String idHapus = input.nextLine();
+                        Operasional.DeleteOperasional(idHapus);
                         break;
                     case 5:
                         return;

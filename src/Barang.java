@@ -54,7 +54,7 @@ public class Barang {
                 System.out.print("Masukkan barang keluar baru :");
                 barang.BarangKeluar = input.nextInt();
 
-                System.out.println("Barang berhasil diubah :");
+                System.out.println("Barang berhasil diubah");
                 return;
             }
         }

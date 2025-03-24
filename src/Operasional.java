@@ -1,39 +1,81 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Operasional {
-    int idTransaksi;
+    String idOperasional;
     String Tanggal;
     int BiayaMobil;
     int BiayaSupir;
     int TotalBiaya;
 
-    public Operasional(int idTransaksi, String Tanggal, int BiayaMobil, int BiayaSupir) {
-        this.idTransaksi = idTransaksi;
+    private static ArrayList<Operasional> dataOperasional = new ArrayList<>();
+
+    public Operasional(String idTransaksi, String Tanggal, int BiayaMobil, int BiayaSupir) {
+        this.idOperasional = idTransaksi;
         this.Tanggal = Tanggal;
         this.BiayaMobil = BiayaMobil;
         this.BiayaSupir = BiayaSupir;
         this.TotalBiaya = BiayaMobil + BiayaSupir;
     }
 
-    public void TambahData() {
-        System.out.println("Data berhasil ditambahkan");
+    public static void CreateOperasional(Operasional operasional) {
+        dataOperasional.add(operasional);
+        System.out.println("Data Operasional berhasil ditambahkan");
     }
 
-    public void EditData(){
-        System.out.println("Data berhasil diubah");
+    public static void ReadOperasional() {
+        if (dataOperasional.isEmpty()) {
+            System.out.println("Data Operasional tidak ditemukan");
+        } else {
+            for (Operasional operasional : dataOperasional) {
+                operasional.info();
+            }
+        }
     }
 
-    public void HapusData() {
-        System.out.println("Data berhasil dihapus");
+    public static void UpdateOperasional(String idOperasional) {
+        for (Operasional operasional : dataOperasional) {
+            if (operasional.getIdOperasional().equals(idOperasional)) {
+                Scanner input = new Scanner(System.in);
+                System.out.print("Masukkan ID Operasional baru: ");
+                operasional.idOperasional = input.nextLine();
+
+                System.out.print("Masukkan Tanggal baru: ");
+                operasional.Tanggal = input.nextLine();
+
+                System.out.print("Masukkan Biaya Mobil baru: ");
+                operasional.BiayaMobil = input.nextInt();
+                input.nextLine();
+
+                System.out.print("Masukkan Biaya Supir baru: ");
+                operasional.BiayaSupir = input.nextInt();
+                input.nextLine();
+
+                System.out.print("Masukkan Total Biaya baru: ");
+                operasional.TotalBiaya = input.nextInt();
+                input.nextLine();
+
+                System.out.print("Operasioanal berhasi diubah");
+                return;
+            }
+        }
+        System.out.println("Data Operasional tidak ditemukan");
     }
 
-    public void CariData() {
-        System.out.println("Data ditemukan");
+    public static void DeleteOperasional(String idOperasional) {
+        for (Operasional operasional : dataOperasional) {
+            if (operasional.getIdOperasional().equals(idOperasional)) {
+                dataOperasional.remove(operasional);
+                System.out.println("Data Operasional berhasil dihapus");
+            }
+        }
     }
 
-    public int getIdTransaksi() {
-        return idTransaksi;
+    public String getIdOperasional() {
+        return idOperasional;
     }
-    public void setIdTransaksi(int idTransaksi) {
-        this.idTransaksi = idTransaksi;
+    public void setIdOperasional(String idTransaksi) {
+        this.idOperasional = idTransaksi;
     }
     public String getTanggal() {
         return Tanggal;
@@ -62,7 +104,7 @@ public class Operasional {
 
     public void info() {
         System.out.println("Data Operasional");
-        System.out.println("IdTransaksi : " + idTransaksi);
+        System.out.println("IdTransaksi : " + idOperasional);
         System.out.println("Tanggal     : " + Tanggal);
         System.out.println("BiayaMobil  : " + BiayaMobil);
         System.out.println("BiayaSupir  : " + BiayaSupir);

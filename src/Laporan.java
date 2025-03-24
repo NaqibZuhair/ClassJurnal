@@ -1,14 +1,66 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Laporan {
-    int idLaporan;
+    String idLaporan;
     String AlamatKirim;
     String Deskripsi;
     String Tanggal;
 
-    public Laporan(int Laporan, String AlamatKirim, String Deskripsi, String Tanggal) {
-        this.idLaporan = Laporan;
+    private static ArrayList<Laporan> daftarLaporan = new ArrayList<>();
+
+    public Laporan(String idlaporan, String AlamatKirim, String Deskripsi, String Tanggal) {
+        this.idLaporan = idlaporan;
         this.AlamatKirim = AlamatKirim;
         this.Deskripsi = Deskripsi;
         this.Tanggal = Tanggal;
+    }
+
+    public static void CreateLaporan(Laporan laporan) {
+        daftarLaporan.add(laporan);
+        System.out.println("Laporan berhasil ditambahkan");
+    }
+
+    public static void ReadLaporan() {
+        if (daftarLaporan.isEmpty()) {
+            System.out.println("Laporan tidak ditemukan");
+        } else {
+            for (Laporan laporan : daftarLaporan) {
+                laporan.info();
+            }
+        }
+    }
+
+    public static void UpdateLaporan(String idLaporan) {
+        for (Laporan laporan : daftarLaporan) {
+            if (laporan.getIdLaporan().equals(idLaporan)) {
+                Scanner input = new Scanner(System.in);
+                System.out.println("Masukkan idLaporan Baru : ");
+                laporan.idLaporan = input.nextLine();
+
+                System.out.println("Masukkan AlamatKirim baru: ");
+                laporan.AlamatKirim = input.nextLine();
+
+                System.out.println("Masukkan Deskripsi baru : ");
+                laporan.Deskripsi = input.nextLine();
+
+                System.out.println("Masukkan Tanggal (dd-mm-yyyy) baru: ");
+                laporan.Tanggal = input.nextLine();
+
+                System.out.println("Laporan berhasil diubah");
+                return;
+            }
+        }
+        System.out.println("Laporan tidak ditemukan");
+    }
+
+    public static void DeleteLaporan(String idLaporan) {
+        for (Laporan laporan : daftarLaporan) {
+            if (laporan.getIdLaporan().equals(idLaporan)) {
+                daftarLaporan.remove(laporan);
+                System.out.println("Laporan berhasil dihapus");
+            }
+        }
     }
 
     public void TambahData() {
@@ -27,11 +79,11 @@ public class Laporan {
         System.out.println("Laporan ditemukan");
     }
 
-    public int getIdLaporan() {
+    public String getIdLaporan() {
         return idLaporan;
     }
 
-    public void setIdLaporan(int idLaporan) {
+    public void setIdLaporan(String idLaporan) {
         this.idLaporan = idLaporan;
     }
     public String getAlamatKirim() {

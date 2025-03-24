@@ -1,12 +1,17 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Transaksi {
-    private int idTransaksi;
+    private String idTransaksi;
     private String Tanggal;
     private String NamaPelanggan;
     private String JenisBarang;
     private int Jumlah;
     private String StatusBayar;
 
-    public Transaksi(int idTransaksi, String Tanggal, String NamaPelanggan, String JenisBarang, int Jumlah, String StatusBayar) {
+    private static ArrayList<Transaksi> dataTransaksi = new ArrayList<>();
+
+    public Transaksi(String idTransaksi, String Tanggal, String NamaPelanggan, String JenisBarang, int Jumlah, String StatusBayar) {
         this.idTransaksi = idTransaksi;
         this.Tanggal = Tanggal;
         this.NamaPelanggan = NamaPelanggan;
@@ -15,26 +20,63 @@ public class Transaksi {
         this.StatusBayar = StatusBayar;
     }
 
-    public void TambahData() {
+    public static void CreateTransaksi(Transaksi transaksi) {
+        dataTransaksi.add(transaksi);
         System.out.println("Transaksi berhasil ditambahkan");
     }
 
-    public void EditData(){
-        System.out.println("Transaksi berhasil diubah");
+    public static void ReadTransaksi() {
+        if (dataTransaksi.isEmpty()) {
+            System.out.println("Transaksi tidak ditemukan");
+        } else {
+            for (Transaksi transaksi : dataTransaksi) {
+                transaksi.info();
+            }
+        }
     }
 
-    public void HapusData() {
-        System.out.println("Transaksi berhasil dihapus");
+    public static void UpdateTransaksi(String idTransaksi) {
+        for (Transaksi transaksi1 : dataTransaksi) {
+            if (transaksi1.idTransaksi.equals(idTransaksi)) {
+                Scanner input = new Scanner(System.in);
+                System.out.print("Masukkan Id Transaksi : ");
+                transaksi1.idTransaksi = input.nextLine();
+
+                System.out.print("Masukkan Tanggal : ");
+                transaksi1.Tanggal = input.nextLine();
+
+                System.out.print("Masukkan Nama Pelanggan : ");
+                transaksi1.NamaPelanggan = input.nextLine();
+
+                System.out.print("Masukkan Jenis Barang : ");
+                transaksi1.JenisBarang = input.nextLine();
+
+                System.out.print("Masukkan Jumlah Barang : ");
+                transaksi1.Jumlah = input.nextInt();
+
+                System.out.print("Masukkan Status Bayar : ");
+                transaksi1.StatusBayar = input.nextLine();
+
+                System.out.print("Data Transaksi berhasil diubah");
+                return;
+            }
+        }
+        System.out.println("Transaksi tidak ditemukan");
     }
 
-    public void CariData() {
-        System.out.println("Transaksi ditemukan");
+    public static void DeleteTransaksi(String idTransaksi) {
+        for (Transaksi transaksi1 : dataTransaksi) {
+            if (transaksi1.idTransaksi.equals(idTransaksi)) {
+                dataTransaksi.remove(transaksi1);
+                System.out.println("Transaksi berhasil dihapus");
+            }
+        }
     }
 
-    public int getIdTransaksi() {
+    public String getIdTransaksi() {
         return idTransaksi;
     }
-    public void setIdTransaksi(int idTransaksi) {
+    public void setIdTransaksi(String idTransaksi) {
         this.idTransaksi = idTransaksi;
     }
     public String getTanggal() {
