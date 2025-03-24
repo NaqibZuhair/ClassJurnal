@@ -30,6 +30,7 @@ public class Laporan {
     public int getIdLaporan() {
         return idLaporan;
     }
+
     public void setIdLaporan(int idLaporan) {
         this.idLaporan = idLaporan;
     }
