@@ -20,7 +20,6 @@ public class Operasional {
 
     public static void CreateOperasional(Operasional operasional) {
         dataOperasional.add(operasional);
-        System.out.println("Data Operasional berhasil ditambahkan");
     }
 
     public static void ReadOperasional() {
@@ -38,21 +37,17 @@ public class Operasional {
             if (operasional.getIdOperasional().equals(idOperasional)) {
                 Scanner input = new Scanner(System.in);
                 System.out.print("Masukkan ID Operasional baru: ");
-                operasional.idOperasional = input.nextLine();
+                operasional.setIdOperasional(input.nextLine());
 
                 System.out.print("Masukkan Tanggal baru: ");
-                operasional.Tanggal = input.nextLine();
+                operasional.setTanggal(input.nextLine());
 
                 System.out.print("Masukkan Biaya Mobil baru: ");
-                operasional.BiayaMobil = input.nextInt();
+                operasional.setBiayaMobil(input.nextInt());
                 input.nextLine();
 
                 System.out.print("Masukkan Biaya Supir baru: ");
-                operasional.BiayaSupir = input.nextInt();
-                input.nextLine();
-
-                System.out.print("Masukkan Total Biaya baru: ");
-                operasional.TotalBiaya = input.nextInt();
+                operasional.setBiayaSupir(input.nextInt());
                 input.nextLine();
 
                 System.out.print("Operasioanal berhasi diubah");

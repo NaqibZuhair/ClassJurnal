@@ -18,7 +18,6 @@ public class Laporan {
 
     public static void CreateLaporan(Laporan laporan) {
         daftarLaporan.add(laporan);
-        System.out.println("Laporan berhasil ditambahkan");
     }
 
     public static void ReadLaporan() {
@@ -36,16 +35,16 @@ public class Laporan {
             if (laporan.getIdLaporan().equals(idLaporan)) {
                 Scanner input = new Scanner(System.in);
                 System.out.println("Masukkan idLaporan Baru : ");
-                laporan.idLaporan = input.nextLine();
+                laporan.setIdLaporan(input.nextLine());
 
                 System.out.println("Masukkan AlamatKirim baru: ");
-                laporan.AlamatKirim = input.nextLine();
+                laporan.setAlamatKirim(input.nextLine());
 
                 System.out.println("Masukkan Deskripsi baru : ");
-                laporan.Deskripsi = input.nextLine();
+                laporan.setDeskripsi(input.nextLine());
 
                 System.out.println("Masukkan Tanggal (dd-mm-yyyy) baru: ");
-                laporan.Tanggal = input.nextLine();
+                laporan.setTanggal(input.nextLine());
 
                 System.out.println("Laporan berhasil diubah");
                 return;

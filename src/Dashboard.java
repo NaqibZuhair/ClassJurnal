@@ -19,8 +19,6 @@ public class Dashboard {
         Barang barang2 = new Barang("B02", "Kayu Jati", "2025-03-12", 150, 40, 15);
         Barang.CreateBarang(barang1);
         Barang.CreateBarang(barang2);
-        barang1.info();
-        barang2.info();
 
         do {
             Scanner input = new Scanner(System.in);
@@ -54,6 +52,7 @@ public class Dashboard {
 
                         Barang barangBaru = new Barang(idBarang, jenisBarang, tanggal, stokGudang, barangMasuk, barangKeluar);
                         Barang.CreateBarang(barangBaru);
+                        System.out.println("\nBarang berhasil ditambahkan");
                         break;
                     case 2:
                         Barang.ReadBarang();
@@ -85,8 +84,6 @@ public class Dashboard {
         Transaksi transaksi2 = new Transaksi("102", "2025-03-12", "Reza Arifin", "Kayu Jati", 7, "Belum Lunas");
         Transaksi.CreateTransaksi(transaksi1);
         Transaksi.CreateTransaksi(transaksi2);
-        transaksi1.info();
-        transaksi2.info();
 
         do {
             Scanner input = new Scanner(System.in);
@@ -120,6 +117,7 @@ public class Dashboard {
 
                         Transaksi transaksiBaru = new Transaksi(idTransaksi, tanggalTransaksi, namaPelanggan, jenisbarangT, jumlahTransaksi, statusBayar);
                         Transaksi.CreateTransaksi(transaksiBaru);
+                        System.out.println("Transaksi berhasil ditambahkan");
                         break;
                     case 2:
                         Transaksi.ReadTransaksi();
@@ -150,8 +148,6 @@ public class Dashboard {
         Laporan laporan2 = new Laporan("702", "Jl. Hutan Sejahtera No. 12", "Laporan Penebangan Kayu Jati", "2025-03-12");
         Laporan.CreateLaporan(laporan1);
         Laporan.CreateLaporan(laporan2);
-        laporan1.info();
-        laporan2.info();
 
         do {
             Scanner input = new Scanner(System.in);
@@ -180,6 +176,7 @@ public class Dashboard {
 
                         Laporan laporanBaru = new Laporan(idLaporan, alamatKirim, Deskripsi, tanggalLaporan);
                         Laporan.CreateLaporan(laporanBaru);
+                        System.out.println("Laporan berhasil ditambahkan");
                         break;
                     case 2:
                         Laporan.ReadLaporan();
@@ -210,8 +207,6 @@ public class Dashboard {
         Operasional operasional2 = new Operasional("402", "2025-03-12", 300000, 90000);
         Operasional.CreateOperasional(operasional1);
         Operasional.CreateOperasional(operasional2);
-        operasional1.info();
-        operasional2.info();
 
         do {
             Scanner input = new Scanner(System.in);
@@ -242,12 +237,13 @@ public class Dashboard {
 
                         Operasional operasionalBaru = new Operasional(idOperasional, tanggalOperasional, biayaMobil, biayaSupir);
                         Operasional.CreateOperasional(operasionalBaru);
+                        System.out.println("Data Operasional berhasil ditambahkan");
                         break;
                     case 3:
                         System.out.println("\n===Update Data Laporan===");
                         System.out.print("Masukkan ID Laporan yang ingin diubah: ");
                         String idUpdate = input.nextLine();
-                        Laporan.UpdateLaporan(idUpdate);
+                        Operasional.UpdateOperasional(idUpdate);
                         break;
                     case 2:Operasional.ReadOperasional();
                         break;

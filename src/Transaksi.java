@@ -22,7 +22,6 @@ public class Transaksi {
 
     public static void CreateTransaksi(Transaksi transaksi) {
         dataTransaksi.add(transaksi);
-        System.out.println("Transaksi berhasil ditambahkan");
     }
 
     public static void ReadTransaksi() {
@@ -39,23 +38,24 @@ public class Transaksi {
         for (Transaksi transaksi1 : dataTransaksi) {
             if (transaksi1.idTransaksi.equals(idTransaksi)) {
                 Scanner input = new Scanner(System.in);
-                System.out.print("Masukkan Id Transaksi : ");
-                transaksi1.idTransaksi = input.nextLine();
+                System.out.print("Masukkan Id Transaksi baru : ");
+                transaksi1.setIdTransaksi(input.nextLine());
 
-                System.out.print("Masukkan Tanggal : ");
-                transaksi1.Tanggal = input.nextLine();
+                System.out.print("Masukkan Tanggal baru : ");
+                transaksi1.setTanggal(input.nextLine());
 
-                System.out.print("Masukkan Nama Pelanggan : ");
-                transaksi1.NamaPelanggan = input.nextLine();
+                System.out.print("Masukkan Nama Pelanggan baru : ");
+                transaksi1.setNamaPelanggan(input.nextLine());
 
-                System.out.print("Masukkan Jenis Barang : ");
-                transaksi1.JenisBarang = input.nextLine();
+                System.out.print("Masukkan Jenis Barang baru : ");
+                transaksi1.setJenisBarang(input.nextLine());
 
-                System.out.print("Masukkan Jumlah Barang : ");
-                transaksi1.Jumlah = input.nextInt();
+                System.out.print("Masukkan Jumlah Barang baru : ");
+                transaksi1.setJumlah(input.nextInt());
+                input.nextLine();
 
-                System.out.print("Masukkan Status Bayar : ");
-                transaksi1.StatusBayar = input.nextLine();
+                System.out.print("Masukkan Status Bayar baru : ");
+                transaksi1.setStatusBayar(input.nextLine());
 
                 System.out.print("Data Transaksi berhasil diubah");
                 return;

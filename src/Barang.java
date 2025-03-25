@@ -22,7 +22,6 @@ public class Barang {
 
     public static void CreateBarang(Barang barang) {
         daftarBarang.add(barang);
-        System.out.println("Barang berhasil ditambahkan");
     }
 
     public static void ReadBarang() {
@@ -39,20 +38,26 @@ public class Barang {
         for (Barang barang : daftarBarang) {
             if (barang.getIdBarang().equals(idBarang)) {
                 Scanner input = new Scanner(System.in);
+                System.out.println("Masukkan id Barang Baru : ");
+                barang.setIdBarang(input.nextLine());
+
                 System.out.print("Masukkan jenis barang baru :");
-                barang.JenisBarang = input.nextLine();
+                barang.setJenisBarang(input.nextLine());
 
                 System.out.print("Masukkan tanggal barang baru :");
-                barang.Tanggal = input.nextLine();
+                barang.setTanggal(input.nextLine());
 
                 System.out.print("Masukkan stok gudang baru :");
-                barang.StokGudang = input.nextInt();
+                barang.setStokGudang(input.nextInt());
+                input.nextLine();
 
                 System.out.print("Masukkan barang masuk baru :");
-                barang.BarangMasuk = input.nextInt();
+                barang.setBarangMasuk(input.nextInt());
+                input.nextLine();
 
                 System.out.print("Masukkan barang keluar baru :");
-                barang.BarangKeluar = input.nextInt();
+                barang.setBarangKeluar(input.nextInt());
+                input.nextLine();
 
                 System.out.println("Barang berhasil diubah");
                 return;
